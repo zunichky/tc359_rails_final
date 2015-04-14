@@ -1,0 +1,7 @@
+== README
+
+I got a little carried away from the original project (even though it may not look pretty):
+
+* I loaded all the nhl teams stats from a webpage
+* Still have the ability to add/edit/delete teams that you add
+

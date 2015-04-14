@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @team.name %>
+</p>
+
+<p>
+  <strong>Games Played:</strong>
+  <%= @team.gamesPlayed %>
+</p>
+
+<p>
+  <strong>Wins:</strong>
+  <%= @team.wins %>
+</p>
+
+<p>
+  <strong>Losses:</strong>
+  <%= @team.losses %>
+</p>
+
+<p>
+  <strong>Ot Losses:</strong>
+  <%= @team.otLosses %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @team.points %>
+</p>
+
+<p>
+  <strong>Nhl Team:</strong>
+  <% if @team.nhlTeam %>
+    Yes
+  <% else %>
+    No
+  <% end %>
+</p>
+
+<% if !@team.nhlTeam %>
+  <% if user_signed_in? %>
+    <%= link_to 'Edit', edit_team_path(@team) %>
+  <% end %>
+<% end %>
+<%= link_to 'Back', teams_path %>

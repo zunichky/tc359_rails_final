@@ -1,0 +1,42 @@
+<% getTeams() %>
+
+<h1>Hockey Teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Games Played</th>
+      <th>Wins</th>
+      <th>Losses</th>
+      <th>Ot Losses</th>
+      <th>Points</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teams.each do |team| %>
+      <tr>
+        <td><%= team.name %></td>
+        <td><%= team.gamesPlayed %></td>
+        <td><%= team.wins %></td>
+        <td><%= team.losses %></td>
+        <td><%= team.otLosses %></td>
+        <td><%= team.points %></td>
+        <td><%= link_to 'Show', team %></td>
+        <% if !team.nhlTeam %>
+          <% if user_signed_in? %>
+            <td><%= link_to 'Edit', edit_team_path(team) %></td>
+            <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if user_signed_in? %>
+  <%= link_to 'New Team', new_team_path %>
+<% end %>
