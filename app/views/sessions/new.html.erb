@@ -1,4 +1,5 @@
 <h1>Log In</h1>
+
 <%= form_tag sessions_path do %>
 <div class="field">
   <%= label_tag :email %><br>
@@ -11,4 +12,12 @@
   <div class="actions">
   <%= submit_tag "Log In" %>
 </div>
+<% end %>
+
+<%= form_tag '/login' do %>
+
+  Email: <%= text_field_tag :email %>
+  Password: <%= password_field_tag :password %>
+  <%= submit_tag "Submit" %>
+
 <% end %>

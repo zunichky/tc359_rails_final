@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   get '/sign-in' => 'sessions#new'
+  post '/sign-in' => 'sessions#create'
+  get '/sign-in' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
   delete '/sign-out' => 'sessions#destroy'
 
   resources :teams
