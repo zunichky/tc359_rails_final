@@ -7,19 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id=nav_bar>
+    <ul id=header_text>
+      <% if user_signed_in? %>
+        <li class=sign_text_a id=user_welcome>Welcome, <%= current_user.email %></li>
+        <li><%= link_to "Log Out", sign_out_path, method: :delete, :class => "sign_text_a" %></li>
+      <% else %>
+        <li><%= link_to "Log In", sign_in_path, :class => "sign_text_a" %></li>
+        <li class=sign_text_a> or </li>
+        <li><%= link_to 'Create an Account', 'signup', :class => "sign_text_a" %><li>
+      <% end %>
+      <li><%= link_to 'Home', '/', :id => "home" %><li>
+    </ul>
+  </div>
+
   <% flash.each do |type, message| %>
     <div class="<%= type %>">
       <p><%= message %></p>
     </div>
   <% end %>
 
-  <% if user_signed_in? %>
-    <li>Signed in in as <%= current_user.email %></li>
-    <li><%= link_to "Sign Out", sign_out_path, method: :delete %></li>
-  <% else %>
-    <li><%= link_to "Sign In", sign_in_path %></li>
-  <% end %>
-  
   <%= yield %>
 
 </body>

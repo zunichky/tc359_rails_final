@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+    @user = user
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
     else
+      flash.alert = @user.errors.full_messages.to_sentence
       redirect_to '/signup'
     end
   end
