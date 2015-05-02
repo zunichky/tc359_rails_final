@@ -23,7 +23,9 @@
 
   <% flash.each do |type, message| %>
     <div class="<%= type %>">
-      <p><%= message %></p>
+      <ul>
+        <li class="alert_message"><%= message %></li>
+      <ul>
     </div>
   <% end %>
 
