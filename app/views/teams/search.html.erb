@@ -1,0 +1,8 @@
+<% search_result = searchTeams(@teamParm["q"][0]) %>
+<% search_result.each do |team| %>
+  <% url = "/teams/" + team.id.to_s  %>
+  <script type="text/javascript">
+    window.location.href= "<%= url %>"
+  </script>
+
+<% end %>

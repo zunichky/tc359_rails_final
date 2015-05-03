@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get '/search' => 'teams#search'
+
   resources :sessions, only: [:new, :create, :destroy]
   get '/sign-in' => 'sessions#new'
   get '/sign-in' => 'sessions#destroy'

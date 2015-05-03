@@ -44,4 +44,9 @@ module TeamsHelper
       end
     end
   end
+
+  def searchTeams(teamName)
+    @searchResult = @teams.search(teamName)
+    return @searchResult
+  end
 end

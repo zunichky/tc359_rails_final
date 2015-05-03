@@ -1,8 +1,15 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
-  before_action :only_allow_signed_in_users, except: [:index, :show]
+  require 'cgi'
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :search]
+  before_action :only_allow_signed_in_users, except: [:index, :show, :search]
   # GET /teams
   # GET /teams.json
+  def search
+    @teams = Team.all
+    cgi = CGI.new
+    @teamParm = cgi.params
+  end
+
   def index
     @teams = Team.all
   end
@@ -64,7 +71,10 @@ class TeamsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team
-      @team = Team.find(params[:id])
+      begin
+        @team = Team.find(params[:id])
+      rescue
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
